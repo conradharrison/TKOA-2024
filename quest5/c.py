@@ -35,7 +35,7 @@ def play_round():
 
     current_column = (current_column+1)%4
 
-    last_n = f"{columns[0][0]}{columns[1][0]}{columns[2][0]}{columns[3][0]}"
+    last_n = f"{columns[0][0]:02}{columns[1][0]:02}{columns[2][0]:02}{columns[3][0]:02}"
     return last_n
 
 def print_columns():
@@ -55,12 +55,15 @@ def print_columns():
 print_columns()
 print()
 
+w = int(number_width+1)
 i = 1
 last_max = 0
 while True:
     last_n = int(play_round())
-    #print_columns()
+    print_columns()
     #print()
+    if (i % 1 == 0): print (f"Finished {i:16} rounds: max = {last_max:{4*w}}, current = {last_n:{4*w}}")
+    if (i % 10 == 0): print_columns()
     if last_n > last_max:
         last_max = last_n
         last_max_i = i
